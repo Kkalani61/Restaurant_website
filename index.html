@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        #title {background-image: url(spoon.jpg); background-repeat:no-repeat; background-size:cover; background-position:center; opacity: 0.8}
+    </style>
+    <meta charset="UTF-8">
+    <title>Delizioso</title>
+
+    <!-- Fonts-->
+
+    <!-- Bootstrap CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/styles.css">
+    
+    <!-- Logos -->
+ 
+    <!-- Jquery CDN -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script> 
+
+</head>
+
+<body>
+    <section id="title">
+        <div class="container-fluid">
+            
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand-lg navbar-dark">
+            <a class="navbar-brand" href="">Delizioso</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo">
+                <span class="navbar-toggler-icon"> </span>
+            </button>
+           
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-link">Home </li>
+                    <li class="nav-link">Menu </li>
+                    <li class="nav-link">Reservations </li>
+                    <li class="nav-link">Offers </li>
+                    <li class="nav-link">Gallery </li>
+                    <li class="nav-link">Membership </li>
+                    <li class="nav-link">Blog </li>
+                    <li class="nav-link">About </li>
+                </ul>
+            </div>
+        </nav>
+        </div>
+
+        <!-- Booking-->
+        <div class="main">
+            <h1> Welcome to Delizioso </h1>
+            <button id="book_table" type="button" class="btn btn-dark btn-lg"> Book Table </button>
+            <button type="button" class="btn btn-dark btn-lg"> Order Online </button>
+        </div>
+
+        <!-- Book table dialogue box-->
+        <div id="myModel" class="model">
+            <div class="model-content">
+                <span class="close">&times; </span>
+                <h2 class="dialogue_heading"> Delizioso </h2>
+                <div class="row">        
+                    <div class="col-sm-6">
+                        <label> Book Table for : </label>
+                    </div>
+                    <div class="col-sm-6">
+                        <button type="button" class="btn btn-dark btn-md">2 </button>
+                        <button type="button" class="btn btn-dark btn-md">4 </button>
+                        <button type="button" class="btn btn-dark btn-md">6 </button>
+                        <button type="button" class="btn btn-dark btn-md">6+ </button>
+                    </div> 
+                </div>   
+                <div class="row">
+                    <div class="col-sm-6">
+                        <label>Select Date : </p>
+                    </div>
+                    <div class="col-sm-6">
+                        <input type="date">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <label>Select Time : </label>
+                    </div>
+                    <div class="col-sm-6">
+                        <input type="time" placeholder="--:--">
+                    </div>
+                </div>
+                <button type="button" id="submit" class="btn btn-dark btn-lg">Submit</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="booking">
+        <h2> <i>Booking</i> </h2>
+        <a>The online booking system allows you to check availability, make your reservation and register yourself to the waiting list for the date of your choice if there is no availability. <b>Please note that the waiting list is under no circumstances a confirmation or valid reservation but only a first step in registering to our system. We will contact you</b> only in the event of availability due to a cancellation.
+            In order to guarantee your reservation, we will require the references of a credit or debit card.<br> <br>For any further information or modification for a confirmed reservation, you can contact us:
+            <br> - by phone at +91 8149 21 2466,
+            <br> - by email:</a> <a href="mailto: reservation@delizioso.in">reservation@delizioso.in </a> 
+
+        <br> <br> <br>
+
+        <h2> <i>Booking and Cancellation Policy.</i> </h2>
+        <a>For any reservation we will require the references of a credit card as a guarantee. The card is secured by the system and we have no access to your data. Reservation will be considered as confirmed once the credit card details will be provided.
+            Your reservation can be cancelled or modified, free of charge until 3 days prior to your scheduled meal. Below that, in the event of non-attendance or late cancellation, we will charge the amount of 150 rupees per person.
+            We hope that we have met your expectations and remain at your disposal for any additional information you may require. <br> <br>
+            
+            <b>We look forward to welcoming you to Delizioso in the near future.</b> </a>
+    </section>
+
+    <script src="index.js"> </script>
+</body>        
+</html>
