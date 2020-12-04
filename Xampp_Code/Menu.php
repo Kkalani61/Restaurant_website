@@ -252,6 +252,7 @@
                         'price': item_prices
                        },
                 success: function(data) {
+                    console.log(data);
                     data = JSON.parse(data)
                     console.log(typeof data);
                     console.log(data.result);

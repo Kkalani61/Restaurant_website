@@ -37,6 +37,18 @@
                 if($res) 
                 {
                     $showMessage = "Account created successfully. Click here to login";
+                    // starting session: 
+                    session_start();
+                    $_SESSION['loggedIn'] = true;
+                    $_SESSION['user_name'] = $username;
+                    $_SESSION['user_email'] = $email;
+                    $_SESSION['user_permission'] = 0;
+
+                    if($_SESSION['user_permission'] == "2") {
+                        header("Location: AdminPanel.php");
+                        exit;
+                    }
+                    header("Location: Home.php");
                 }
                 else
                 {

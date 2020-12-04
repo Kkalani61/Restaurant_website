@@ -20,12 +20,21 @@
             
             // starting session: 
             session_start();
-            $_SESSION['loggedIn'] = true;
-            $_SESSION['user_name'] = $data["user_name"];
-            $_SESSION['user_email'] = $user_email;
-            $_SESSION['user_permission'] = $data["user_permission"];
+            // if already logged in from signin.php
+            if(isset($_SESSION) && $_SESSION["loggedIn"])
+                header("Location: Home.php");
+            else {
+                $_SESSION['loggedIn'] = true;
+                $_SESSION['user_name'] = $data["user_name"];
+                $_SESSION['user_email'] = $user_email;
+                $_SESSION['user_permission'] = $data["user_permission"];
 
-            header("Location: Home.php");
+                if($_SESSION['user_permission'] == "2") {
+                    header("Location: AdminPanel.php");
+                    exit;
+                }
+                header("Location: Home.php");
+            }
        }
        else
        {
@@ -70,6 +79,7 @@
             </div>
             <button type="submit" class="btn btn-success">Login</button>
         </form>
+        <h6>Don't have an account? <a href="signup.php">Create one</a></h6>
     </div>
 
     <!-- Optional JavaScript; choose one of the two! -->

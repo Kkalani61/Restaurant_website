@@ -11,6 +11,8 @@
         {
             $user_name = $_SESSION['user_name'];
             $user_email = $_SESSION['user_email'];
+            $ord_mode = $_SESSION['mode'];
+            $ord_dest = $_SESSION['destination'];
         }
 
         $isWarning = true;
@@ -28,10 +30,9 @@
                     $ord_food_id = $item_ids[$i];
                     $ord_quantity = $item_qtys[$i];
                     $ord_price = $item_price[$i]*$item_qtys[$i];
-                    $ord_mode = 1;
-                    $ord_dest = 2;
                     
-                    $insert_query = "INSERT INTO FOOD_ORDER VALUES('$user_email', $ord_food_id, $ord_quantity, $ord_price, CURDATE(), DEFAULT, DEFAULT, $ord_dest)";
+                    $insert_query = "INSERT INTO FOOD_ORDER(ord_user_id, ord_food_id, ord_quantity, ord_price, ord_date, ord_mode, ord_dest)
+                                     VALUES('$user_email', $ord_food_id, $ord_quantity, $ord_price, CURDATE(), $ord_mode, '$ord_dest')";
                     $order_result = mysqli_query($conn, $insert_query);
                     if(!$order_result)
                     {
