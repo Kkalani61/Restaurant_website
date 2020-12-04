@@ -50,10 +50,18 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    
+    <!-- CSS -->
+    <style>
+    
+    body {background-image: url('./assets/wine.jfif');background-repeat:no-repeat; background-size:cover; background-position:center; opacity: 1}
+  
+    </style>
 
     <title>Delizioso</title>
   </head>
   <body>
+  <section id="title">
     <?php require "partials/_nav.php" ?>
     <div class="container" style="text-align: center;">
       <h1>Welcome to Delizioso</h1>
@@ -61,10 +69,10 @@
         <div class="row" style="justify-content: center;">
           <div class="col-sm-2">
             <?php if($delivery_details) { ?>
-              <a href="Menu.php"><button class="btn btn-primary">Place Your Order</button></a>
+              <a href="Menu.php"><button class="btn btn-lg btn-dark">Place Your Order</button></a>
             <?php } else{ ?>
               <!-- Button trigger modal -->
-              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+              <button type="button" id="butn" class="btn btn-lg btn-dark" data-toggle="modal" data-target="#exampleModal">
                 Place Order
               </button>
 
@@ -102,11 +110,12 @@
 
 
           <div class="col-sm-2">
-            <a href="TableListView.php"><button class="btn btn-primary">Book Table</button></a>
+            <a href="TableListView.php"><button id="butn" class="btn btn-lg btn-dark">Book Table</button></a>
           </div>
         </div>
-      </div>
+        </div>
 
+  </section>
       <!-- Order Tracking -->
       <div class="container my-5">
         <?php

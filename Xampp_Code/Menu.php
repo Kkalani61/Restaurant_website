@@ -80,6 +80,12 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
 
+    <!-- CSS -->
+    <style>
+    h1 {text-align: center;}
+    body {padding:3% 15% 7%; background-image: url('./assets/vege.jpg');background-repeat:no-repeat; background-size:cover; background-position:center; opacity: 1}
+    </style>
+
     <!-- Jquery -->
     <script
     src="https://code.jquery.com/jquery-3.4.1.min.js"
@@ -107,8 +113,8 @@
             </div>
             <div class="modal-body"></div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" id="confirm">Confirm</button>
+                <button type="button" class="btn btn-lg btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-lg btn-primary" id="confirm">Confirm</button>
             </div>
             </div>
         </div>
@@ -150,7 +156,7 @@
                 ?>
             </tbody>
         </table>
-        <button id="place" class="btn btn-primary">Place</button>
+        <button id="place" class="btn btn-lg btn-dark">Place</button>
     </form>
 
     <?php
