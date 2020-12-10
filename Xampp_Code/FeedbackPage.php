@@ -24,16 +24,37 @@
     integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
     crossorigin="anonymous"></script>
 
+    <style>
+        .dot {
+            height: 25px;
+            width: 25px;
+            background-color: black;
+            border-radius: 50%;
+            display: inline-block;
+        }
+        .filled {
+            background-color: gold;
+        }
+        .half-filled {
+            background: linear-gradient(to right, gold 50%, black 50%);
+}
+    </style>
+
     <title>Feedback</title>
   </head>
   <body>
+    <?php include "partials/_nav.php" ?>
     <div class="container my-4" style="text-align: center; width: 450px;">
         <h1>Feedback</h1>
         <form>
             <div class="form-group row">
                 <label for="rating" class="col-sm-2 col-form-label">Rating</label>
                 <div class="col-sm-10">
-                    <input type="number" min="1" max="5" class="form-control" id="rating">
+                    <span class="dot" id="1"></span>
+                    <span class="dot" id="2"></span>
+                    <span class="dot" id="3"></span>
+                    <span class="dot" id="4"></span>
+                    <span class="dot" id="5"></span>
                 </div>
             </div>
             <div class="form-group row">
@@ -54,9 +75,9 @@
         $("#submit_feedback").click(function(event) {
             event.preventDefault();
 
-            let rating = $("#rating").val();
+            let rating = $(".filled").length;
             let review = $("#review").val();
-
+            console.log("rating", rating);
             jQuery.noConflict();
             $.ajax({
                 type: "POST",
@@ -80,11 +101,35 @@
         });
     </script>
 
+    <!-- Rating -->
+    <script>
+        $("#1").click(function() {
+            $(".dot").removeClass("filled");
+            $("#1").addClass("filled");
+        });
+        $("#2").click(function() {
+            $(".dot").removeClass("filled");
+            $("#1, #2").addClass("filled");
+        });
+        $("#3").click(function() {
+            $(".dot").removeClass("filled");
+            $("#1, #2, #3").addClass("filled");
+        });
+        $("#4").click(function() {
+            $(".dot").removeClass("filled");
+            $("#1, #2, #3, #4").addClass("filled");
+        });
+        $("#5").click(function() {
+            $(".dot").removeClass("filled");
+            $("#1, #2, #3, #4, #5").addClass("filled");
+        });
+    </script>
+
     <!-- Optional JavaScript; choose one of the two! -->
 
     <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+    <!-- <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script> -->
 
     <!-- Option 2: jQuery, Popper.js, and Bootstrap JS
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>

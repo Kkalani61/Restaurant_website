@@ -35,12 +35,13 @@
     <title>Delizioso</title>
   </head>
   <body>
-    <div class="container">
+    <?php include "partials/_nav.php" ?>
+    <div class="container my-3">
         <h1>Tables</h1>
-
+        <a href="userReservation.php">My Reservations</a>
         <?php
         for($i=1; $i <= intdiv($number, 3)+1; $i++) { ?>
-            <div class="row">
+            <div class="row my-1">
                 <?php
                     $record = mysqli_fetch_assoc($query_res);
                     while($record) {

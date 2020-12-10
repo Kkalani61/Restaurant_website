@@ -53,23 +53,38 @@
     
     <!-- CSS -->
     <style>
-    
-    body {background-image: url('./assets/wine.jfif');background-repeat:no-repeat; background-size:cover; background-position:center; opacity: 1}
-  
+      body {background-image: url('./assets/BG2.jpg');background-repeat:no-repeat; background-size:cover; background-position:center; opacity: 1}
+      .dot {
+        height: 25px;
+        width: 25px;
+        background-color: black;
+        border-radius: 50%;
+        display: inline-block;
+        margin: 5px;
+      }
+      .filled {
+          background-color: gold;
+      }
+      .half-filled {
+          background: linear-gradient(to right, gold 50%, black 50%);
+      }
     </style>
+
+    <!-- AOS CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 
     <title>Delizioso</title>
   </head>
   <body>
   <section id="title">
     <?php require "partials/_nav.php" ?>
-    <div class="container" style="text-align: center;">
-      <h1>Welcome to Delizioso</h1>
+    <div class="container my-5" style="text-align: center;">
+      <h1 style=" color: white;">Welcome to Delizioso</h1>
       <div class="container">
         <div class="row" style="justify-content: center;">
           <div class="col-sm-2">
             <?php if($delivery_details) { ?>
-              <a href="Menu.php"><button class="btn btn-lg btn-dark">Place Your Order</button></a>
+              <a href="Menu.php"><button class="btn btn-lg btn-dark">Place Order</button></a>
             <?php } else{ ?>
               <!-- Button trigger modal -->
               <button type="button" id="butn" class="btn btn-lg btn-dark" data-toggle="modal" data-target="#exampleModal">
@@ -117,11 +132,11 @@
 
   </section>
       <!-- Order Tracking -->
-      <div class="container my-5">
+      <div class="container my-5" style="color: white;">
         <?php
           if($loggedin && $num_orders > 0) { ?>
           <h4> Track Your Orders </h4>
-          <table class="table table-striped">
+          <table class="table table-striped" style="color: white;">
               <thead>
                   <tr>
                   <th scope="col">Name</th>
@@ -150,25 +165,74 @@
       </div>
 
       <!-- feedbacks -->
-      <div class="container">
+      <div class="container" style="text-align: center; margin-top:100px;">
+        <h3 data-aos="fade-up" style="color: white;"> Reviews </h3>
+        <div class="row">
         <?php
+          $animation = "fade-right";
+
           $feedback_record = mysqli_fetch_assoc($feedbacks);
           while($feedback_record) {
+            $rating = $feedback_record['rating'];
+            $rating_code = "";
+            for($i=1; $i<=$rating; $i++)
+              $rating_code = $rating_code . "<span class='dot filled'></span>";
+            for($i=1; $i<=5-$rating; $i++)
+              $rating_code = $rating_code . "<span class='dot'></span>";
+            
+            if($animation == "fade-left")
+              $animation = "fade-right";
+            else
+              $animation = "fade-left";
+            
+            echo "
+            <div class='card' data-aos='{$animation}' style='width: 18rem; height: 18rem; margin: auto; margin-top: 1rem'>
+              <div class='card-body'>
+                <h5 class='card-title'>"
+                 . $rating_code . 
+                "</h5>
+                <h5 class='card-title'>@{$feedback_record['cust_email']}</h5>
+                <p class='card-text' style='overflow: auto'>{$feedback_record['review']}</p>
+              </div>
+            </div>";
+
             //var_dump($feedback_record);
-            echo "<div class='card'>
-                  <div class='card-header'>
-                  {$feedback_record['cust_email']}
-                  </div>
-                  <div class='card-body'>
-                    <h5 class='card-title'>Rating: {$feedback_record['rating']}</h5>
-                    <p class='card-text'>{$feedback_record['review']}.</p>
-                  </div>
-                </div>";
-                $feedback_record = mysqli_fetch_assoc($feedbacks);
+            // echo "<div class='card'>
+            //       <div class='card-header'>
+            //       {$feedback_record['cust_email']}
+            //       </div>
+            //       <div class='card-body'>
+            //         <h5 class='card-title'>Rating: {$feedback_record['rating']}</h5>
+            //         <p class='card-text'>{$feedback_record['review']}.</p>
+            //       </div>
+            //     </div>";
+            
+            $feedback_record = mysqli_fetch_assoc($feedbacks);
           }
         ?>
+        </div>
       </div>
     </div>
+    <!-- AOS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 1200
+        });
+    </script>
+
+    <!-- Custom script -->
+    <script>
+      $("input:radio[name=mode]").change(function() {
+        console.log($(this).val());
+        if($(this).val() == 1) {
+          $("input[type=text][name=destination]").attr('placeholder', 'Enter Table Number');
+        } else {
+          $("input[type=text][name=destination]").attr('placeholder', 'Enter your address');
+        }
+      });
+    </script>
+
     <!-- Optional JavaScript; choose one of the two! -->
 
     <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->

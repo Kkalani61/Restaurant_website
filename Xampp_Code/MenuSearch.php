@@ -14,48 +14,12 @@
     {
         header("Location: Login.php");
     }
+    
+    if($_SERVER["REQUEST_METHOD"] == "GET") {
+        $itemName = $_GET["search"];
+    }
 
-    // if($_SERVER['REQUEST_METHOD'] == "POST")
-    // {
-    //     $isWarning = true;
-    //     if(isset($_POST)) {
-    //         // var_dump($_POST);
-    //         if(count($_POST) != 0) {
-    //             $isWarning = false;
-    //             $item_ids = array_map('intval', $_POST['checkbox']);
-    //             $item_qtys = array_map('intval', $_POST['quantity']);
-    //             $item_price = array_map('intval', $_POST['price']);
-
-    //             for($i=0; $i<count($item_ids); $i++)
-    //             {
-    //                 echo nl2br($item_ids[$i] . "->" . $item_price[$i] . "*" . $item_qtys[$i] . "=" . $item_price[$i]*$item_qtys[$i] . "\n");
-    //                 $ord_food_id = $item_ids[$i];
-    //                 $ord_quantity = $item_qtys[$i];
-    //                 $ord_price = $item_price[$i]*$item_qtys[$i];
-    //                 $ord_mode = 1;
-    //                 $ord_dest = 2;
-                    
-    //                 $insert_query = "INSERT INTO FOOD_ORDER VALUES('divesh@gmail.com', $ord_food_id, $ord_quantity, $ord_price, CURDATE(), DEFAULT, DEFAULT, $ord_dest)";
-    //                 $order_result = mysqli_query($conn, $insert_query);
-    //                 if(!$order_result)
-    //                 {
-    //                     die("Insert Error " .mysqli_error($conn));
-    //                 }
-    //                 else
-    //                 {
-    //                     echo "Order placed successfully";
-    //                 }
-    //             }
-    //         }
-    //         // echo nl2br("\n");
-    //         // foreach($_POST["checkbox"] as $checkbox)
-    //         // {
-    //         //     echo $checkbox ." ";
-    //         // }
-    //     }
-    // }
-
-    $sql = "SELECT * FROM ITEM";
+    $sql = "SELECT * FROM ITEM WHERE item_name LIKE '%{$itemName}%'";
     $query_res = mysqli_query($conn, $sql);
     if(!$query_res) {
         die("Query error ".mysqli_connect_error());
@@ -128,7 +92,7 @@
         </div>
     </div>
 
-    <form class="my-3" style="overflow: auto; height: 300px;">
+    <form style="overflow: auto; height: 300px;">
         <table class="table table-striped">
             <thead>
                 <tr>
@@ -280,18 +244,5 @@
 
         // get list of all selected check boxes:
     </script>
-
-        
-    <!-- Optional JavaScript; choose one of the two! -->
-
-    <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
-    <!-- <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script> -->
-
-    <!-- Option 2: jQuery, Popper.js, and Bootstrap JS
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous"></script>
-    -->
   </body>
 </html>
